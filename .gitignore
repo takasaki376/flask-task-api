@@ -1,0 +1,7 @@
+src/.venv
+src/.devcontainer
+src/__pycache__
+src/api/__pycache__
+src/.devcontainer
+mysql/mysql_data
+.env

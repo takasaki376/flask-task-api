@@ -1,0 +1,26 @@
+version: "3"
+services:
+  api:
+    build: .
+    ports:
+      - 127.0.0.1:5000:5000
+    volumes:
+      - "./src:/src"
+    tty: true
+    env_file:
+      - .env
+    links:
+      - db
+    environment:
+      TZ: Asia/Tokyo
+      FLASK_APP: ./run.py
+      FLASK_ENV: development
+      PYTHONPATH: /src
+    command: poetry run flask run
+  db:
+    build: ./mysql/
+    volumes:
+      - ./mysql/mysql_data:/var/lib/mysql # データの永続化
+      - ./mysql/sqls:/docker-entrypoint-initdb.d # 初期化時に実行するSQL
+    environment:
+      - MYSQL_ROOT_PASSWORD=hoge # パスワードだけど、ローカルなので、
