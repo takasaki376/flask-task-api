@@ -1,8 +1,8 @@
 # import app
 from flask import Flask
 from flask_restful import Api
-from database import init_db
-from api.views import TaskListAPI, TaskAPI
+from src.database import init_db
+from src.api.views import TaskListAPI, TaskAPI
 
 
 def create_app():
@@ -22,4 +22,5 @@ def create_app():
 app = create_app()
 
 if __name__ == '__main__':
-  app.run(host='0.0.0.0', port=5000)
+  # app.run(host='0.0.0.0', port=8000)
+  app.run()

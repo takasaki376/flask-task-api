@@ -1,7 +1,7 @@
 from flask import Flask, jsonify
 from flask_restful import Api
 from database import init_db
-from api.views import TaskListAPI, TaskAPI
+from src.api.views import TaskListAPI, TaskAPI
 
 
 def create_app():

@@ -1,14 +1,15 @@
 from datetime import datetime
-# from flask_marshmallow import Marshmallow
+import sqlalchemy_utils
+from flask_marshmallow import Marshmallow
 # from marshmallow_sqlalchemy import ModelSchema
 from marshmallow_sqlalchemy import SQLAlchemyAutoSchema
 from flask_marshmallow.fields import fields
 from sqlalchemy_utils import UUIDType
-from database import db
+from src.database import db
 
 import uuid
 
-# ma = Marshmallow()
+ma = Marshmallow()
 
 
 class TaskModel(db.Model):

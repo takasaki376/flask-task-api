@@ -3,12 +3,10 @@ services:
   api:
     build: .
     ports:
-      - 127.0.0.1:5000:5000
+      - "8000:8000"
     volumes:
-      - "./src:/src"
+      - ./src:/src
     tty: true
-    env_file:
-      - .env
     links:
       - db
     environment:
@@ -16,11 +14,14 @@ services:
       FLASK_APP: ./run.py
       FLASK_ENV: development
       PYTHONPATH: /src
-    command: poetry run flask run
+    #command: poetry run flask run
   db:
     build: ./mysql/
     volumes:
       - ./mysql/mysql_data:/var/lib/mysql # データの永続化
       - ./mysql/sqls:/docker-entrypoint-initdb.d # 初期化時に実行するSQL
     environment:
-      - MYSQL_ROOT_PASSWORD=hoge # パスワードだけど、ローカルなので、
+      - MYSQL_ROOT_PASSWORD=hoge # パスワード設定（ローカル環境でしか使用しない）
+      - TZ='Asia/Tokyo' # タイムゾーンを日本時間に設定
+    ports:
+      - 33306:3306 # ホストマシンのポート33306を、docker内のポート3306に接続する
