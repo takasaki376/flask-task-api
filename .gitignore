@@ -5,3 +5,9 @@ src/api/__pycache__
 src/.devcontainer
 mysql/mysql_data
 .env
+src/migrations/versions/*.py
+src/migrations/versions/__pycache__
+src/migrations/script.py.mako
+src/migrations/alembic.ini
+src/migrations/__pycache__
+src/migrations/*.py

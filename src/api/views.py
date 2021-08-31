@@ -1,7 +1,7 @@
 from flask_restful import Resource, reqparse, abort
 from flask import jsonify
-from api.models import TaskModel, TaskSchema
-from database import db
+from src.api.models import TaskModel, TaskSchema
+from src.database import db
 
 
 class TaskListAPI(Resource):
