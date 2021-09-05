@@ -17,6 +17,7 @@ services:
     #command: poetry run flask run
   db:
     build: ./mysql/
+    platform: linux/x86_64 #  M1 Mac の場合に必要　Windowsの場合は消す
     volumes:
       - ./mysql/mysql_data:/var/lib/mysql # データの永続化
       - ./mysql/sqls:/docker-entrypoint-initdb.d # 初期化時に実行するSQL

@@ -22,5 +22,5 @@ COPY src/pyproject.toml* src/poetry.lock* ./
 RUN poetry config virtualenvs.in-project true
 RUN if [ -f pyproject.toml ]; then poetry install; fi
 
-# uvicornのサーバーを立ち上げる
+# サーバーを立ち上げる
 ENTRYPOINT ["poetry", "run", "flask", "run" ,"--host", "0.0.0.0", "--port=8000"]

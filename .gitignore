@@ -11,3 +11,4 @@ src/migrations/script.py.mako
 src/migrations/alembic.ini
 src/migrations/__pycache__
 src/migrations/*.py
+src/migrations/*

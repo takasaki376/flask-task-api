@@ -164,7 +164,6 @@ services:
       FLASK_APP: ./run.py
       FLASK_ENV: development
       PYTHONPATH: /src
-    command: poetry run flask run
   db:
     build: ./mysql/
     volumes:
@@ -205,6 +204,9 @@ COPY src/pyproject.toml* src/poetry.lock* ./
 # poetryでライブラリをインストール (pyproject.tomlが既にある場合)
 RUN poetry config virtualenvs.in-project true
 RUN if [ -f pyproject.toml ]; then poetry install; fi
+
+# サーバーを立ち上げる
+ENTRYPOINT ["poetry", "run", "flask", "run" ,"--host", "0.0.0.0", "--port=8000"]
 ```
 
 ## AP サーバ　イメージのビルド
@@ -426,7 +428,7 @@ def create_app():
 app = create_app()
 
 if __name__ == '__main__':
-  app.run(host='0.0.0.0', port=5000)
+  app.run()
 ```
 
 ## src/app.py 作成
@@ -683,3 +685,23 @@ Database changed
 ```
 
 ```
+
+
+
+# git cloneから開始
+
+
+```
+> docker-compose build
+> docker-compose run --entrypoint "poetry install" api
+> docker-compose up -d
+> docker-compose exec api bash
+
+# bpoetry run flask db init
+# poetry run flask db upgrade
+# poetry run flask db upgrade
+# exit
+
+
+```
+
